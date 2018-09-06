@@ -39,7 +39,7 @@ class Connect extends mysqli
         foreach ($array as $key => $value) {
 
             $setvalues .= "`".$key."`,";
-            $values .= $value.',';
+            $values .= '"'.$value.'",';
             
         }
         $setvalues= substr($setvalues, 0, -1);
@@ -48,7 +48,7 @@ class Connect extends mysqli
         $values= substr($values, 0, -1);
         $values .= ')';
 
-        $total = "INSERT INTO ".$ntable." ".$setvalues." VALUES ".$values.";";
+        echo $total = "INSERT INTO ".$ntable." ".$setvalues." VALUES ".$values.";";
         $db->sql($total);
     }
 
