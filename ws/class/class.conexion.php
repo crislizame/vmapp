@@ -48,7 +48,7 @@ class Connect extends mysqli
         $values= substr($values, 0, -1);
         $values .= ')';
 
-        echo $total = "INSERT INTO ".$ntable." ".$setvalues." VALUES ".$values.";";
+         $total = "INSERT INTO ".$ntable." ".$setvalues." VALUES ".$values.";";
         $db->sql($total);
     }
 

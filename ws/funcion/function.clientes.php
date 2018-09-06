@@ -86,6 +86,7 @@ class Cliente {
                 $v['tipcodigo'] = $tipcodigo;
                 $v['ciucodigo'] = $ciucodigo;
                 $v['zoncodigo'] = $zoncodigo;
+                $v['clidirec'] = $v["cliedirconsul"];
                 $v['clicupocre'] = "300";
                 $v['clidiascre'] = "30";
                 $v['clifecisys'] = date('Y-m-d H:i:s');
