@@ -1,6 +1,6 @@
 <?php
 include '../class/class.conexion.php';
-$string = isset($_GET['lol']) ? $_GET['z'] : $x = 'Sin array';
+$string = isset($_GET['lol']) ? $_GET['lol'] : $x = 'Sin array';
 
 if(isset($x)){
     echo $x;
