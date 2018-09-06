@@ -6,6 +6,7 @@ if(isset($x)){
     echo $x;
     exit;
 }
+ $db = new Connect();
 
                     $sql = "SELECT * FROM `imgproducto` where imgcodigo = '".$string."';";
                     $query = $db->sql($sql);
