@@ -10,11 +10,7 @@ if(isset($x)){
                     $sql = "SELECT * FROM `imgproducto` where imgcodigo = '".$string."';";
                     $query = $db->sql($sql);
                     $num = $db->obnum($query);
-                    if ($num != 0) {
-                        while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
-                            $result = $row['img'];
-                        }
-                    }
+$row = $query->fetch_array(MYSQLI_ASSOC);
 
 
-echo $result;
+echo $row['img'];
