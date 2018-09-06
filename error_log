@@ -1,0 +1,8 @@
+[23-Nov-2017 04:00:04 UTC] PHP Notice:  Undefined index: HTTPS in /home/naturlifeec/public_html/vmapp/index.php on line 192
+[23-Nov-2017 04:00:04 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/naturlifeec/public_html/vmapp/index.php:192) in /home/naturlifeec/public_html/vmapp/index.php on line 193
+[23-Nov-2017 04:00:08 UTC] PHP Notice:  Undefined index: HTTPS in /home/naturlifeec/public_html/vmapp/index.php on line 192
+[23-Nov-2017 04:00:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/naturlifeec/public_html/vmapp/index.php:192) in /home/naturlifeec/public_html/vmapp/index.php on line 193
+[24-Nov-2017 00:48:22 UTC] PHP Fatal error:  Call to a member function select_datos() on null in /home/naturlifeec/public_html/vmapp/application/controllers/Home.php on line 30
+[01-Jul-2018 18:54:42 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/naturlifeec/public_html/vmapp/application/controllers/Sistema.php on line 45
+[08-Jul-2018 20:07:32 UTC] PHP Fatal error:  Call to undefined function vardump() in /home/naturlifeec/public_html/vmapp/application/views/actulizar_cliente.php on line 2
+[08-Jul-2018 20:19:32 UTC] PHP Fatal error:  Allowed memory size of 136314880 bytes exhausted (tried to allocate 131334144 bytes) in /home/naturlifeec/public_html/vmapp/application/views/actulizar_cliente.php on line 222
