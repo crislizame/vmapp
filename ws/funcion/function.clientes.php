@@ -71,6 +71,37 @@ class Cliente {
 
         $db->close();
     }
+
+    public function guardar_cliente()
+    {
+                $db = new Connect();
+                $v = $this->string;
+                $tipcodigo = $this->reconocimiento("tipocliente",$v["tipcodigo"],"tipdescrip","tipcodigo","1");
+                $ciucodigo = $this->reconocimiento("ciudad",$v["ciucodigo"],"ciudescrip","ciucodigo","1");
+                $zoncodigo = $this->reconocimiento("zona",$v["zoncodigo"],"zondescrip","zoncodigo","1");
+
+                $v['tipcodigo'] = $tipcodigo;
+                $v['ciucodigo'] = $ciucodigo;
+                $v['zoncodigo'] = $zoncodigo;
+
+                $v['clistatus'] = "ACTIVO";
+                foreach ($v as $key => $val ) {
+                    if($key == "website" || $key == "cliobserva")
+                    {
+
+                    }else{
+                        if ($val == '') {
+                            return 'Valores Vacios.';
+                        }
+                    }
+
+                }
+
+                $sqlinsert = $db->insertar("cliente",$v);
+                $db->sql($sqlinsert);
+
+                return "Guardado con Éxito";
+    }
     
     
         public function reconocimiento($nombretable,$valortabla,$wheretable,$codetable,$nm){
