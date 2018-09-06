@@ -91,7 +91,7 @@ class Cliente {
 
                     }else{
                         if ($val == '') {
-                            return 'Valores Vacios.';
+                            return "Valores Vacios.";
                         }
                     }
 

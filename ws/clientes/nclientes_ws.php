@@ -15,4 +15,4 @@ $img = $_POST;
 $login = new Cliente($img);
 
 //enviamos el json para la web service
-echo json_encode($login->guardar_cliente());
+echo $login->guardar_cliente();

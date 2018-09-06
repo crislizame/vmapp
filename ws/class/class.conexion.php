@@ -46,7 +46,7 @@ class Connect extends mysqli
         $values= substr($values, 0, -1);
         $values .= ')';
 
-        echo "INSERT INTO ".$ntable." ".$setvalues." VALUES ".$values.";";
+        return "INSERT INTO ".$ntable." ".$setvalues." VALUES ".$values.";";
     }
 
 
