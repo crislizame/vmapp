@@ -12,7 +12,7 @@ if(isset($x)){
                     $num = $db->obnum($query);
                     if ($num != 0) {
                         while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
-                            $result = $row['img'];a
+                            $result = $row['img'];
                         }
                     }
 
