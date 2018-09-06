@@ -75,6 +75,9 @@ class Cliente {
     public function guardar_cliente()
     {
                 $db = new Connect();
+                        mysqli_set_charset($db, "utf8");
+        date_default_timezone_set('America/Guayaquil');
+
                 $v = $this->string;
                 $tipcodigo = $this->reconocimiento("tipocliente",$v["tipcodigo"],"tipdescrip","tipcodigo","1");
                 $ciucodigo = $this->reconocimiento("ciudad",$v["ciucodigo"],"ciudescrip","ciucodigo","1");
@@ -83,10 +86,14 @@ class Cliente {
                 $v['tipcodigo'] = $tipcodigo;
                 $v['ciucodigo'] = $ciucodigo;
                 $v['zoncodigo'] = $zoncodigo;
+                $v['clicupocre'] = "300";
+                $v['clidiascre'] = "30";
+                $v['clifecisys'] = date('Y-m-d H:i:s');
+                $v['clifecmodsys'] = date('Y-m-d H:i:s');
 
                 $v['clistatus'] = "ACTIVO";
                 foreach ($v as $key => $val ) {
-                    if($key == "website" || $key == "cliobserva")
+                    if($key == "website" || $key == "cliobserva" || $key == "clitelef2" || $key == "clitelef3")
                     {
 
                     }else{
@@ -97,8 +104,8 @@ class Cliente {
 
                 }
 
-                $sqlinsert = $db->insertar("cliente",$v);
-                $db->sql($sqlinsert);
+               $db->insertar("cliente",$v);
+            
 
                 return "Guardado con Éxito";
     }
