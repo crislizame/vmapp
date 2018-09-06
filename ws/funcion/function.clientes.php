@@ -98,7 +98,7 @@ class Cliente {
 
                     }else{
                         if ($val == '') {
-                            return "Valores Vacios.";
+                            echo "Valores Vacios.";
                         }
                     }
 
@@ -107,7 +107,7 @@ class Cliente {
                $db->insertar("cliente",$v);
             
 
-                return "Guardado con Éxito";
+                echo "Guardado con Éxito";
     }
     
     
