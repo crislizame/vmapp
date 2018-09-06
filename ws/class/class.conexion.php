@@ -32,6 +32,8 @@ class Connect extends mysqli
 
     public function insertar($ntable, $array)
     {
+        $db = new Connect();
+
         $setvalues = '(';
         $values = '(';
         foreach ($array as $key => $value) {

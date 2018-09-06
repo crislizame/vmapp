@@ -75,8 +75,8 @@ class Cliente {
     public function guardar_cliente()
     {
                 $db = new Connect();
-                        mysqli_set_charset($db, "utf8");
-        date_default_timezone_set('America/Guayaquil');
+                mysqli_set_charset($db, "utf8");
+                date_default_timezone_set('America/Guayaquil');
 
                 $v = $this->string;
                 $tipcodigo = $this->reconocimiento("tipocliente",$v["tipcodigo"],"tipdescrip","tipcodigo","1");
