@@ -1,2 +1,0 @@
-[15-Mar-2018 14:22:30 America/Guayaquil] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/naturlifeec/public_html/ws/class/class.conexion.php on line 26
-[15-Mar-2018 19:23:01 UTC] PHP Fatal error:  Class 'Obtenerlist' not found in /home/naturlifeec/public_html/ws/productos/array_ws.php on line 12
