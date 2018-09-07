@@ -331,7 +331,7 @@
                     $(document).ready(function (){
 						$('#editarcli').on('show.bs.modal',function (e) {
 							var id = $(e.relatedTarget);
-							var idd = id.parent().parent().parent().('td').html();
+							var idd = id.parent().parent().parent().find('td').html();
 							console.log(idd);
 						});
                         //incluir datos actualizados a la tabla con id tablaactualizar cuando se edite o elimine algo
