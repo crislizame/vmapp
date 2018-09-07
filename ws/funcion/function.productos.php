@@ -26,37 +26,51 @@ class Productos
         mysqli_set_charset($db, "utf8");
         date_default_timezone_set('America/Guayaquil');
         $v = $this->v;
-
-        $tipo = $v['tipo'];
+        $result='';
+        $tipo = $v;
         switch ($tipo) {
             case 'stocka': $sql = 'SELECT p.artdescri as nombre, p.artstock as sotck, p.artprecventa1 as precio, l.lindescrip as line FROM producto p, linproducto l where l.lincodigo = p.lincodigo ASC;';
             $query = $db->sql($sql);
-            $row[] = $query->fetch_array(MYSQLI_ASSOC);
-            return $row;
+            while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                $result[] = $row;
+            }
+            return $result;
 
             break;
             case 'stockd': $sql = 'SELECT p.artdescri as nombre, p.artstock as sotck, p.artprecventa1 as precio, l.lindescrip as line FROM producto p, linproducto l where l.lincodigo = p.lincodigo DESC;';
             $query = $db->sql($sql);
-            $row[] = $query->fetch_array(MYSQLI_ASSOC);
-            return $row;
+            while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                                $result[] = $row;
+
+            }
+            return $result;
 
             break;
             case 'all': $sql = 'SELECT p.artdescri as nombre, p.artstock as sotck, p.artprecventa1 as precio, l.lindescrip as line FROM producto p, linproducto l where l.lincodigo = p.lincodigo;';
             $query = $db->sql($sql);
-            $row[] = $query->fetch_array(MYSQLI_ASSOC);
-            return $row;
+            while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                                $result[] = $row;
+
+            }
+            return $result;
 
             break;
             case 'bs': $sql = 'select pd.artcodigo as artcodigo, sum(pd.pedcantidad),p.artdescri as nombre, p.artstock as sotck, p.artprecventa1 as precio, l.lindescrip from pedidos_detalle pd, producto p, linproducto l where pd.artcodigo = p.artcodigo and p.lincodigo = l.lincodigo GROUP BY artcodigo order by sum(pd.pedcantidad) DESC;';
             $query = $db->sql($sql);
-            $row[] = $query->fetch_array(MYSQLI_ASSOC);
-            return $row;
+            while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                                $result[] = $row;
+
+            }
+            return $result;
 
             break;
             case 'line': $sql = 'SELECT p.artdescri as nombre, p.artstock as sotck, p.artprecventa1 as precio, l.lindescrip as line FROM producto p, linproducto l where l.lincodigo = p.lincodigo;';
             $query = $db->sql($sql);
-            $row[] = $query->fetch_array(MYSQLI_ASSOC);
-            return $row;
+            while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                                $result[] = $row;
+
+            }
+            return $result;
 
             break;
             default: # code... 

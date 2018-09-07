@@ -10,7 +10,7 @@ if (isset($x)) {
 include '../funcion/function.productos.php';
 //iniciamos nuestra clase y pasamos los datos
 $img = $_GET;
-$login = new Productos($img);
+$login = new Productos($string);
 
 //enviamos el json para la web service
 echo json_encode($login->verproductos());
