@@ -243,7 +243,7 @@
 
 
 
-                        <div id="editarcli" class="modal" tabindex="-1">
+                        <div class="modal fade" id="editarcli" tabindex="-1" role="dialog" >
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -364,7 +364,7 @@
 						$('#editarcli').on('show.bs.modal',function (e) {
 							var id = $(e.relatedTarget);
 							var idd = id.parent().parent().find('td').html();
-							console.log(idds);
+							console.log(idd);
 						});
                         //incluir datos actualizados a la tabla con id tablaactualizar cuando se edite o elimine algo
                     });
