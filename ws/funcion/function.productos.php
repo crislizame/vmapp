@@ -55,7 +55,7 @@ class Productos
             return $result;
 
             break;
-            case 'bs': $sql = 'select pd.artcodigo as artcodigo, sum(pd.pedcantidad),p.artdescri as nombre, p.artstock as sotck, p.artprecventa1 as precio, l.lindescrip from pedidos_detalle pd, producto p, linproducto l where pd.artcodigo = p.artcodigo and p.lincodigo = l.lincodigo GROUP BY artcodigo order by sum(pd.pedcantidad) DESC;';
+            case 'bs': $sql = 'select pd.artcodigo as artcodigo, sum(pd.pedcantidad),p.artdescri as nombre, p.artstock as sotck, p.artprecventa1 as precio, l.lindescrip as line from pedidos_detalle pd, producto p, linproducto l where pd.artcodigo = p.artcodigo and p.lincodigo = l.lincodigo GROUP BY artcodigo order by sum(pd.pedcantidad) DESC;';
             $query = $db->sql($sql);
             while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
                                 $result[] = $row;
