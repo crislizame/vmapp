@@ -12,6 +12,72 @@ class Pedido
         $this->img = $img;
     }
 
+    public function guardarpedido()
+    {
+        $db = new Connect();
+        mysqli_set_charset($db, "utf8");
+        date_default_timezone_set('America/Guayaquil');
+        $v = $this->img;
+
+        $idcli = $v['idcli'];
+        $subtotal = $v['subtotal'];
+        $total = $v['total'];
+        $usrcodigo = $v['usrcodigo'];
+        unset($v['idcli']);
+        unset($v['subtotal']);
+        unset($v['total']);
+        unset($v['usrcodigo']);
+
+        $sql = 'SELECT * from cliente where clicodigo="'.$idcli.'";';
+        $query = $db->sql($sql);
+        $row = $query->fetch_array(MYSQLI_ASSOC);
+
+        $whereped_cab = array(
+            "ciucodigo"=>$row['ciucodigo'],
+            "zoncodigo"=>$row['zoncodigo'],
+            "clicodigo"=>$row['clicodigo'],
+            "cliruc"=>$row['cliruc'],
+            "clinombre"=>$row['clinombre'],
+            "clidirec"=>$row['clidirec'],
+            "clitelef1"=>$row['clitelef1'],
+            "pecfecemi"=>date('Y-m-d'),
+            "pecfecisys"=>date('Y-m-d H:i:s'),
+            "pecusrinsys"=>$usrcodigo,
+            "pectipopag"=>"creadito"
+        );
+        $db->insertar('pedidos_cabecera',$whereped_cab);
+        $pednumped = $db->insert_id();
+
+        for ($i = 0;$i < count($v);) {
+
+            $tituloimg = $v['tituloimg'.$i];
+            $precio = $v['precio'.$i];
+            $stock = $v['stock'.$i];
+            $msel = $v['msel'.$i];
+
+            $whereped_det =array(
+                'pednumped' => $pednumped,
+                'artcodigo' => $tituloimg,
+                'pedapliiva' => "0",
+                'pedcantped' => $msel,
+                'pedcantidad' => $msel,
+                'artprecventa1' => $precio,
+                'pedvalor' => $precio,
+                'pedvaltot' => $total,
+                'pedfecisys' => date('Y-m-d H:i:s'),
+                'pedusrinsys' => $usrcodigo,
+                'pedfecmodsys' => date('Y-m-d H:i:s')
+             );
+            $db->insertar('pedidos_detalle', $whereped_det);
+
+            $i = $i +4;
+        }
+
+        return "Pedido Realizado con éxito.";
+
+
+    }
+
     public function verpedidos()
     {
         $id = $this->img;
@@ -84,6 +150,7 @@ class Pedido
 
         $db->close();
     }
+
     public function verificarcliente(){
         $db = new Connect();
         mysqli_set_charset($db,"utf8");
@@ -116,6 +183,7 @@ class Pedido
 
         $db->close();
     }
+
         public function obtenerproductos(){
             $db = new Connect();
             mysqli_set_charset($db,"utf8");
@@ -146,4 +214,5 @@ class Pedido
 
          $db->close();
     }
+
 }
