@@ -14,12 +14,12 @@ class Pedido
     public function verpedidos()
     {
         $id = $this->img;
-
+        $id2 = $id['usrcodigo'];
         $db = new Connect();
         mysqli_set_charset($db, "utf8");
         date_default_timezone_set('America/Guayaquil');
 
-        $sql = 'SELECT * from pedidos_cabecera where pecusrinsys="'.$id.'";';
+        $sql = 'SELECT * from pedidos_cabecera where pecusrinsys="'.$id2.'";';
         $query = $db->sql($sql);
         while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
             $pednumped = $row['pednumped'];
