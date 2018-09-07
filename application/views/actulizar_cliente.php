@@ -131,7 +131,7 @@
 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
 													<tr>
-					
+														<th class="hidden">Id</th>
 														<th>Nombre o Razon Social</th>
 														<th>RUC</th>
 														<th class="hidden-480">Direccion</th>
@@ -155,7 +155,11 @@
                                                                                                     
 													<tr>
 								
-
+													<td class="hidden">
+															<?php
+                                                                                                                                                                                                                                                                                                                        echo $clientesall[$i]['clicodigo'];
+                                                                                                                                                                                                                                                                                                                             ?>
+														</td>
 														<td>
 															<?php
                                                                                                                                                                                                                                                                                                                         echo $clientesall[$i]['clinombre'];
@@ -239,7 +243,7 @@
 
 
 
-                        <div id="modal-form" class="modal" id="editarcli" tabindex="-1">
+                        <div id="editarcli" class="modal" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -252,89 +256,31 @@
                                             <div class="col-xs-12 col-sm-5">
                                                 <div class="space"></div>
 
-                                                <input type="file" />
+                                                        <input type="text" id="clinombre" placeholder="Nombre" value="" />
                                             </div>
 
                                             <div class="col-xs-12 col-sm-7">
                                                 <div class="form-group">
-                                                    <label for="form-field-select-3">Location</label>
 
-                                                    <div>
-                                                        <select class="chosen-select" data-placeholder="Choose a Country...">
-                                                            <option value="">&nbsp;</option>
-                                                            <option value="AL">Alabama</option>
-                                                            <option value="AK">Alaska</option>
-                                                            <option value="AZ">Arizona</option>
-                                                            <option value="AR">Arkansas</option>
-                                                            <option value="CA">California</option>
-                                                            <option value="CO">Colorado</option>
-                                                            <option value="CT">Connecticut</option>
-                                                            <option value="DE">Delaware</option>
-                                                            <option value="FL">Florida</option>
-                                                            <option value="GA">Georgia</option>
-                                                            <option value="HI">Hawaii</option>
-                                                            <option value="ID">Idaho</option>
-                                                            <option value="IL">Illinois</option>
-                                                            <option value="IN">Indiana</option>
-                                                            <option value="IA">Iowa</option>
-                                                            <option value="KS">Kansas</option>
-                                                            <option value="KY">Kentucky</option>
-                                                            <option value="LA">Louisiana</option>
-                                                            <option value="ME">Maine</option>
-                                                            <option value="MD">Maryland</option>
-                                                            <option value="MA">Massachusetts</option>
-                                                            <option value="MI">Michigan</option>
-                                                            <option value="MN">Minnesota</option>
-                                                            <option value="MS">Mississippi</option>
-                                                            <option value="MO">Missouri</option>
-                                                            <option value="MT">Montana</option>
-                                                            <option value="NE">Nebraska</option>
-                                                            <option value="NV">Nevada</option>
-                                                            <option value="NH">New Hampshire</option>
-                                                            <option value="NJ">New Jersey</option>
-                                                            <option value="NM">New Mexico</option>
-                                                            <option value="NY">New York</option>
-                                                            <option value="NC">North Carolina</option>
-                                                            <option value="ND">North Dakota</option>
-                                                            <option value="OH">Ohio</option>
-                                                            <option value="OK">Oklahoma</option>
-                                                            <option value="OR">Oregon</option>
-                                                            <option value="PA">Pennsylvania</option>
-                                                            <option value="RI">Rhode Island</option>
-                                                            <option value="SC">South Carolina</option>
-                                                            <option value="SD">South Dakota</option>
-                                                            <option value="TN">Tennessee</option>
-                                                            <option value="TX">Texas</option>
-                                                            <option value="UT">Utah</option>
-                                                            <option value="VT">Vermont</option>
-                                                            <option value="VA">Virginia</option>
-                                                            <option value="WA">Washington</option>
-                                                            <option value="WV">West Virginia</option>
-                                                            <option value="WI">Wisconsin</option>
-                                                            <option value="WY">Wyoming</option>
-                                                        </select>
+                                                 <div>
+                                                        <input type="text" id="cliruc" placeholder="Ruc" value="" />
                                                     </div>
                                                 </div>
 
                                                 <div class="space-4"></div>
 
                                                 <div class="form-group">
-                                                    <label for="form-field-username">Username</label>
 
                                                     <div>
-                                                        <input type="text" id="form-field-username" placeholder="Username" value="alexdoe" />
+                                                        <input type="text" id="clidirecc" placeholder="direc" value="" />
+                                                        <input type="hidden" id="clicodigo" placeholder="" value="" />
                                                     </div>
                                                 </div>
 
                                                 <div class="space-4"></div>
 
                                                 <div class="form-group">
-                                                    <label for="form-field-first">Name</label>
 
-                                                    <div>
-                                                        <input type="text" id="form-field-first" placeholder="First Name" value="Alex" />
-                                                        <input type="text" id="form-field-last" placeholder="Last Name" value="Doe" />
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -343,12 +289,12 @@
                                     <div class="modal-footer">
                                         <button class="btn btn-sm" data-dismiss="modal">
                                             <i class="ace-icon fa fa-times"></i>
-                                            Cancel
+                                            Cancelar
                                         </button>
 
                                         <button class="btn btn-sm btn-primary">
                                             <i class="ace-icon fa fa-check"></i>
-                                            Save
+                                            Actualizar
                                         </button>
                                     </div>
                                 </div>
@@ -415,6 +361,11 @@
 		</script>
                 <script type="text/javascript">
                     $(document).ready(function (){
+						$('#editarcli').on('show.bs.modal',function (e) {
+							var id = $(e.relatedTarget);
+							var idd = id.parent().parent().find('td').html();
+							console.log(idd);
+.						});
                         //incluir datos actualizados a la tabla con id tablaactualizar cuando se edite o elimine algo
                     });
                 </script>
