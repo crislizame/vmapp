@@ -49,7 +49,7 @@ class Cliente {
                      "ciudad"=>$ciudad,
                     "zona"=>$zona,
                     "cliruc"=>$row['cliruc'],
-                "cupo" =>$row['cupo'],
+                "cupo" =>'$'.$row['cupo'],
                     "pednumped"=>$row2['pednumped'],
                     "fpedido"=>$row2['pecfecemi'],
                     "precio"=>$rowx['pedvaltot']
@@ -61,7 +61,7 @@ class Cliente {
                                  "ciudad"=>$ciudad,
                     "zona"=>$zona,
                     "cliruc"=>$row['cliruc'],
-                "cupo" =>$row['cupo'],
+                "cupo" =>'$'.$row['cupo'],
                     "pednumped"=>"",
                     "fpedido"=>"",
                     "precio"=>""
