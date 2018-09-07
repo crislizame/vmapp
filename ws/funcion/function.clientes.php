@@ -45,7 +45,7 @@ class Cliente {
         $rowx = $queryx->fetch_array(MYSQLI_ASSOC);
 
                 $result[] = array(
-                    "pdnumped"=>$row2['pednumped'],
+                    "pednumped"=>$row2['pednumped'],
                     "fpedido"=>$row2['pecfecemi'],
                     "ciudad"=>$ciudad,
                     "zona"=>$zona,
