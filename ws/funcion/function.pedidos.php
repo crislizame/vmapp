@@ -43,10 +43,10 @@ class Pedido
             "pecfecemi"=>date('Y-m-d'),
             "pecfecisys"=>date('Y-m-d H:i:s'),
             "pecusrinsys"=>$usrcodigo,
-            "pectipopag"=>"creadito"
+            "pectipopag"=>"credito"
         );
-        $db->insertar('pedidos_cabecera',$whereped_cab);
-        $pednumped = $db->insert_id();
+        $pednumped =  $db->insertar('pedidos_cabecera',$whereped_cab);
+
 
         for ($i = 0;$i < count($v);) {
 
