@@ -85,7 +85,7 @@ class Pedido
         mysqli_set_charset($db, "utf8");
         date_default_timezone_set('America/Guayaquil');
 
-        $sql = 'SELECT * from pedidos_cabecera where pecusrinsys="'.$id2.'";';
+        $sql = 'SELECT * from pedidos_cabecera where pecusrinsys="'.$id2.'" order by pednumped DESC;';
         $query = $db->sql($sql);
         while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
             $pednumped = $row['pednumped'];
