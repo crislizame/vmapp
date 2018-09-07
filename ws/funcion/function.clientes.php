@@ -17,9 +17,63 @@ class Cliente {
     public $string;
 
 
-//agregamos las variables al constructor y las seteamos
+    //agregamos las variables al constructor y las seteamos 
     public function __construct($string){
         $this->string = $string;
+    }
+
+    public function obtenerdatosclientes()
+    {
+        $db = new Connect();
+        mysqli_set_charset($db, "utf8");
+        date_default_timezone_set('America/Guayaquil');
+        $v = $this->string;
+        $sql = 'SELECT clicupocre as cupo, tipcodigo, ciucodigo, zoncodigo,cliruc FROM cliente where clicodigo="'.$v['clicodigo'].'";';
+        $query = $db->sql($sql);
+        $row = $query->fetch_array(MYSQLI_ASSOC);
+
+        $ciudad = $this->obtenernombres('ciudad',$row['ciucodigo'],'ciucodigo','ciudescrip');
+        $zona = $this->obtenernombres('zona',$row['zoncodigo'],'zoncodigo','zondescrip');
+
+                $sql2 = 'SELECT * FROM pedidos_cabecera where clicodigo = "'.$v['clicodigo'].'" ORDER BY pednumped DESC LIMIT 0,5;';
+        $query2 = $db->sql($sql2);
+        $num2 = $db->obnum($query2);
+        if ($num2 != 0) {
+            while ($row2 = $query2->fetch_array(MYSQLI_ASSOC)) {
+         $sqlx = 'SELECT * FROM pedidos_detalle where pednumped = "'.$row2['pednumped'].'";';
+        $queryx = $db->sql($sqlx);
+        $rowx = $queryx->fetch_array(MYSQLI_ASSOC);
+
+                $result[] = array(
+                    "pdnumped"=>$row2['pednumped'],
+                    "fpedido"=>$row2['pecfecemi'],
+                    "ciudad"=>$ciudad,
+                    "zona"=>$zona,
+                    "cliruc"=>$$row['cliruc'],
+                    "precio"=>$$rowx['pedvaltot']
+                );
+
+            }
+        }
+        return $result;
+
+
+    }
+    public function obtenernombres($nombretable,$valortabla,$wheretable,$codetable)
+    {
+        $sql = "SELECT * FROM $nombretable WHERE $wheretable = '$valortabla';";
+        $query = $db->sql($sql);
+        $num = $db->obnum($query);
+        if ($num != 0) {
+                        while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+                      
+                                $result = $row[$codetable];
+                           
+                        }
+
+        }
+        return $result;
+    
     }
     public function consultarcliente(){
          $db = new Connect();
@@ -114,26 +168,26 @@ class Cliente {
     
         public function reconocimiento($nombretable,$valortabla,$wheretable,$codetable,$nm){
                 $db = new Connect();
-//funcion donde reconoce el codigo del producto desde su descripcion
-        $sql = "SELECT * FROM $nombretable WHERE $wheretable like '%$valortabla%';";
+                //funcion donde reconoce el codigo del producto desde su descripcion
+             $sql = "SELECT * FROM $nombretable WHERE $wheretable like '%$valortabla%';";
                     $query = $db->sql($sql);
                     $num = $db->obnum($query);
                     if($num != 0){
                         if($nm==2){
-    switch ($wheretable){
-        case 'tipdescrip':
-                                                                        $result[] = array("$wheretable"=>'Tipo Cliente - Todos');
+                switch ($wheretable){
+                    case 'tipdescrip':
+                                                                                    $result[] = array("$wheretable"=>'Tipo Cliente - Todos');
 
-            break;
-                case 'zondescrip':
-                                                                        $result[] = array("$wheretable"=>'Zona Cliente - Todos');
+                        break;
+                            case 'zondescrip':
+                                                                                    $result[] = array("$wheretable"=>'Zona Cliente - Todos');
 
-            break;
-                case 'ciudescrip':
-                                                                        $result[] = array("$wheretable"=>'Ciudad Cliente - Todos');
+                        break;
+                            case 'ciudescrip':
+                                                                                    $result[] = array("$wheretable"=>'Ciudad Cliente - Todos');
 
-            break;
-    }
+                        break;
+                }
 
                             }
                         while($row = $query->fetch_array(MYSQLI_ASSOC)){
