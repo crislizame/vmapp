@@ -11,6 +11,52 @@ class Pedido
         $this->img = $img;
     }
 
+    public function verpedidos()
+    {
+        $id = $this->img;
+
+        $db = new Connect();
+        mysqli_set_charset($db, "utf8");
+        date_default_timezone_set('America/Guayaquil');
+
+        $sql = 'SELECT * from pedidos_cabecera where pecusrinsys="'.$id.'";';
+        $query = $db->sql($sql);
+        while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+            $pednumped = $row['pednumped'];
+            $fecha = $row['pecfecemi'];
+            $nombre = $row['clinombre'];
+
+        $sql2 = 'SELECT * from pedidos_detalle where pednumped="'.$pednumped.'";';
+        $query2 = $db->sql($sql2);
+        $num2 = $db->obnum($query2);    
+        $roww = $query2->fetch_array(MYSQLI_ASSOC);
+        $pedvaltot = $roww['pedvaltot'];
+        $sql22 = 'SELECT * from pxp_cliente where pednumped="'.$pednumped.'";';
+        $query22 = $db->sql($sql22);
+        $num22 = $db->obnum($query22);
+         $roww2 = $query2->fetch_array(MYSQLI_ASSOC);
+         switch ($num22) {
+             case '0':
+                $estado = 'p';
+                 break;
+             default:
+                 $estado = $roww2['pxp_estado'];
+                 break;
+         }
+                $result[] = array(
+                    "pednumped"=> $pednumped,
+                    "fecha"=> $fecha,
+                    "nombre"=> $nombre,
+                    "estado"=> $estado,
+                    "pedvaltot"=> $pedvaltot
+                );
+
+        }
+        return $result;
+
+
+    }
+
     public function consultarcliente(){
         $db = new Connect();
         mysqli_set_charset($db,"utf8");
@@ -70,12 +116,12 @@ class Pedido
         $db->close();
     }
         public function obtenerproductos(){
-        $db = new Connect();
-        mysqli_set_charset($db,"utf8");
-        date_default_timezone_set('America/Guayaquil');
-          $valores = $this->img;
-          $codigo = trim($valores['clicodigo']);
-        $result = null;
+            $db = new Connect();
+            mysqli_set_charset($db,"utf8");
+            date_default_timezone_set('America/Guayaquil');
+            $valores = $this->img;
+            $codigo = trim($valores['clicodigo']);
+            $result = null;
                     $sql = "SELECT * FROM producto where artstatus like '%ACTIVO%';";
                     $query = $db->sql($sql);
                     $num = $db->obnum($query);
@@ -97,6 +143,6 @@ class Pedido
                                         }
                         return $result;
 
-        $db->close();
+         $db->close();
     }
 }
