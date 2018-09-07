@@ -24,7 +24,7 @@ class Pedido
         while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
             $pednumped = $row['pednumped'];
             $fecha = $row['pecfecemi'];
-            $nombre = $row['clinombre'];
+            $nombre =ucfirst(strtolower($row['clinombre']));
 
         $sql2 = 'SELECT * from pedidos_detalle where pednumped="'.$pednumped.'";';
         $query2 = $db->sql($sql2);
