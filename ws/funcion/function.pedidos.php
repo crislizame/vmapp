@@ -7,7 +7,8 @@ class Pedido
 
 
 //agregamos las variables al constructor y las seteamos
-    public function __construct($img){
+    public function __construct($img)
+    {
         $this->img = $img;
     }
 

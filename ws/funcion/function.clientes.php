@@ -120,7 +120,7 @@ class Cliente {
           }
 
           $result = null;
-                    $sql = "SELECT * FROM cliente where cliruc like '%".$bruc."%' and clinombre like '%".$bname."%' and tipcodigo like '%$lcli1%'"
+                    $sql = "SELECT * FROM cliente where (cliruc like '%".$bruc."%' or clinombre like '%".$bname."%') and tipcodigo like '%$lcli1%'"
                             . " and ciucodigo like '%$ccli1%' and zoncodigo like '%$zcli1%';";
                     $query = $db->sql($sql);
                     $num = $db->obnum($query);
