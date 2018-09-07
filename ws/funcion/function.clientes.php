@@ -49,8 +49,8 @@ class Cliente {
                     "fpedido"=>$row2['pecfecemi'],
                     "ciudad"=>$ciudad,
                     "zona"=>$zona,
-                    "cliruc"=>$$row['cliruc'],
-                    "precio"=>$$rowx['pedvaltot']
+                    "cliruc"=>$row['cliruc'],
+                    "precio"=>$rowx['pedvaltot']
                 );
 
             }
