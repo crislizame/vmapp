@@ -38,11 +38,7 @@ class Cliente {
                 $sql2 = 'SELECT * FROM pedidos_cabecera where clicodigo = "'.$v['clicodigo'].'" ORDER BY pednumped DESC LIMIT 0,5;';
         $query2 = $db->sql($sql2);
         $num2 = $db->obnum($query2);
-        $result[] = array(                    
-                    "ciudad"=>$ciudad,
-                    "zona"=>$zona,
-                    "cliruc"=>$row['cliruc'],
-                "cupo" =>$row['cupo'] );
+
         if ($num2 != 0) {
             while ($row2 = $query2->fetch_array(MYSQLI_ASSOC)) {
          $sqlx = 'SELECT * FROM pedidos_detalle where pednumped = "'.$row2['pednumped'].'";';
@@ -50,6 +46,10 @@ class Cliente {
         $rowx = $queryx->fetch_array(MYSQLI_ASSOC);
 
                 $result[] = array(
+                     "ciudad"=>$ciudad,
+                    "zona"=>$zona,
+                    "cliruc"=>$row['cliruc'],
+                "cupo" =>$row['cupo'],
                     "pednumped"=>$row2['pednumped'],
                     "fpedido"=>$row2['pecfecemi'],
                     "precio"=>$rowx['pedvaltot']
@@ -58,6 +58,10 @@ class Cliente {
             }
         }else{
                             $result[] = array(
+                                 "ciudad"=>$ciudad,
+                    "zona"=>$zona,
+                    "cliruc"=>$row['cliruc'],
+                "cupo" =>$row['cupo'],
                     "pednumped"=>"",
                     "fpedido"=>"",
                     "precio"=>""
@@ -70,6 +74,8 @@ class Cliente {
     }
     public function obtenernombres($nombretable,$valortabla,$wheretable,$codetable)
     {
+        $db = new Connect();
+
         $sql = "SELECT * FROM $nombretable WHERE $wheretable = '$valortabla';";
         $query = $db->sql($sql);
         $num = $db->obnum($query);
