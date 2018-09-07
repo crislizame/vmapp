@@ -626,7 +626,7 @@
                 <script type="text/javascript">
                     $(document).ready(function (){
                         //incluir datos actualizados a la tabla con id tablaactualizar cuando se edite o elimine algo
-                    };
+                    });
                 </script>
 <!-- inline scripts related to this page -->
 </body>

@@ -69,7 +69,8 @@ class Sistema extends CI_Controller {
                             $this->load->view('nuevo',$array);
                             break;
                         case "actualizar":
-                                                       $query = $this->db->query("SELECT * FROM `cliente` where clistatus='ACTIVO' ");
+
+                        $query = $this->db->query("SELECT * FROM `cliente` where clistatus='ACTIVO' ");
                               $clientesall = array();
                               
                 foreach ($query->result_array() as $row)
@@ -90,6 +91,8 @@ class Sistema extends CI_Controller {
                         case "eliminar":
                             break;
                     }
+                    case 'pedidos':
+                    
                     break;
             }
 
