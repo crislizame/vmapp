@@ -13,4 +13,4 @@ $img = $_POST;
 $login = new Pedido($img);
 
 //enviamos el json para la web service
-echo json_encode($login->verpedidos());
+echo json_encode($login->verpedidos(),JSON_UNESCAPED_UNICODE);

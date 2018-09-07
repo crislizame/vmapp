@@ -13,4 +13,4 @@ $img = $_GET;
 $login = new Productos($string);
 
 //enviamos el json para la web service
-echo json_encode($login->verproductos());
+echo json_encode($login->verproductos(),JSON_UNESCAPED_UNICODE);
