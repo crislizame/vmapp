@@ -45,7 +45,24 @@ class Pedido
             "pecusrinsys"=>$usrcodigo,
             "pectipopag"=>"credito"
         );
-        $pednumped =  $db->insertar('pedidos_cabecera',$whereped_cab);
+         $setvalues = '(';
+        $values = '(';
+        foreach ($whereped_cab as $key => $value) {
+            $setvalues .= "`".$key."`,";
+            $values .= '"'.$value.'",';
+        }
+        $setvalues= substr($setvalues, 0, -1);
+        $setvalues .= ')';
+
+        $values= substr($values, 0, -1);
+        $values .= ')';
+
+         $total = "INSERT INTO pedidos_cabecera ".$setvalues." VALUES ".$values.";";
+        
+         $db->query($total);
+
+
+        $pednumped =  $db->insert_id();
 
 echo $pednumped;
         for ($i = 0;$i < count($v);) {
