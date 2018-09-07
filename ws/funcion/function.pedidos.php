@@ -47,7 +47,7 @@ class Pedido
         );
         $pednumped =  $db->insertar('pedidos_cabecera',$whereped_cab);
 
-
+echo $pednumped;
         for ($i = 0;$i < count($v);) {
 
             $tituloimg = $v['tituloimg'.$i];
