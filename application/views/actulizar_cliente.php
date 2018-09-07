@@ -365,7 +365,7 @@
 							var id = $(e.relatedTarget);
 							var idd = id.parent().parent().find('td').html();
 							console.log(idds);
-.						});
+						});
                         //incluir datos actualizados a la tabla con id tablaactualizar cuando se edite o elimine algo
                     });
                 </script>
