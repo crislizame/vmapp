@@ -188,7 +188,7 @@
 																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
 																</a>
 
-																<a class="green" href="#" data-toogle="modal" data-target="#editarcli">
+																<a class="green" href="#" data-toogle="modal" data-target="editarcli">
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 
@@ -364,7 +364,7 @@
 						$('#editarcli').on('show.bs.modal',function (e) {
 							var id = $(e.relatedTarget);
 							var idd = id.parent().parent().find('td').html();
-							console.log(idd);
+							console.log(idds);
 .						});
                         //incluir datos actualizados a la tabla con id tablaactualizar cuando se edite o elimine algo
                     });
