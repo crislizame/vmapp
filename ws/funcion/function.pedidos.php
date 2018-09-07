@@ -101,12 +101,13 @@ class Pedido
         $sql22 = 'SELECT * from pxp_cliente where pednumped="'.$pednumped.'";';
         $query22 = $db->sql($sql22);
         $num22 = $db->obnum($query22);
-         $roww2 = $query2->fetch_array(MYSQLI_ASSOC);
          switch ($num22) {
              case '0':
                 $estado = 'p';
                  break;
              default:
+                $roww2 = $query22->fetch_array(MYSQLI_ASSOC);
+
                  $estado = $roww2['pxp_estado'];
                  break;
          }
