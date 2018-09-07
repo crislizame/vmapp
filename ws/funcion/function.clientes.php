@@ -56,6 +56,13 @@ class Cliente {
                 );
 
             }
+        }else{
+                            $result[] = array(
+                    "pednumped"=>"",
+                    "fpedido"=>"",
+                    "precio"=>""
+                );
+
         }
         return $result;
 
