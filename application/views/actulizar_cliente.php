@@ -188,8 +188,8 @@
 																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
 																</a>
 
-																<a class="green" href="#" data-toggle="modal" data-target="#deditarcli">
-																	<i class="ace-icon fa fa-pencil bigger-130" data-toggle="modal" data-target="#deditarcli"></i>
+																<a class="green" href="#" data-toggle="modal" data-target="#editarcli">
+																	<i class="ace-icon fa fa-pencil bigger-130" ></i>
 																</a>
 
 																<a class="red" href="#">
