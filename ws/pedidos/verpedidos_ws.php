@@ -7,7 +7,7 @@ if (isset($x)) {
     exit;
 }
 //incluimos nuestra clase
-include '../funcion/function.productos.php';
+include '../funcion/function.pedidos.php';
 //iniciamos nuestra clase y pasamos los datos
 $img = $_POST;
 $login = new Pedido($img);
