@@ -12,7 +12,7 @@
  *
  * @author CRISLIZAME
  */
-class Cliente
+class Productos
 {
      public $v;
 
