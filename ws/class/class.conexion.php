@@ -51,7 +51,7 @@ class Connect extends mysqli
          $total = "INSERT INTO ".$ntable." ".$setvalues." VALUES ".$values.";";
         
          $db->query($total);
-        return $db->insert_id();
+        return $db->insert_id;
     }
 
 
