@@ -38,6 +38,11 @@ class Cliente {
                 $sql2 = 'SELECT * FROM pedidos_cabecera where clicodigo = "'.$v['clicodigo'].'" ORDER BY pednumped DESC LIMIT 0,5;';
         $query2 = $db->sql($sql2);
         $num2 = $db->obnum($query2);
+        $result[] = array(                    
+                    "ciudad"=>$ciudad,
+                    "zona"=>$zona,
+                    "cliruc"=>$row['cliruc'],
+                "cupo" =>$row['cupo'] );
         if ($num2 != 0) {
             while ($row2 = $query2->fetch_array(MYSQLI_ASSOC)) {
          $sqlx = 'SELECT * FROM pedidos_detalle where pednumped = "'.$row2['pednumped'].'";';
@@ -47,9 +52,6 @@ class Cliente {
                 $result[] = array(
                     "pednumped"=>$row2['pednumped'],
                     "fpedido"=>$row2['pecfecemi'],
-                    "ciudad"=>$ciudad,
-                    "zona"=>$zona,
-                    "cliruc"=>$row['cliruc'],
                     "precio"=>$rowx['pedvaltot']
                 );
 
