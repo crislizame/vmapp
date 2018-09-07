@@ -65,7 +65,7 @@ class Pedido
           $valores = $this->img;
           $ci = trim($valores['cliruc']);
           $result = null;
-                    $sql = "SELECT * FROM cliente where cliruc like '%".$ci."%';";
+                    $sql = "SELECT * FROM cliente where cliruc like '%".$ci."%' and clinombre like '%".$ci."%';";
                     $query = $db->sql($sql);
                     $num = $db->obnum($query);
                     if($num != 0){
